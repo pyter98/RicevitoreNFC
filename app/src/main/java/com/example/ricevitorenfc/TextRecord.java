@@ -11,7 +11,7 @@ import java.util.Arrays;
 /**
  * An NFC Text Record
  */
-public class TextRecord /*implements ParsedNdefRecord */{
+public class TextRecord implements ParsedNdefRecord {
 
     /** ISO/IANA language code */
     private final String mLanguageCode;
@@ -39,7 +39,7 @@ public class TextRecord /*implements ParsedNdefRecord */{
     }
 
     // TODO: deal with text fields which span multiple NdefRecords
-    public static ParsedNdefRecord parse(NdefRecord record) {
+    public static TextRecord parse(NdefRecord record) {
         Preconditions.checkArgument(record.getTnf() == NdefRecord.TNF_WELL_KNOWN);
         Preconditions.checkArgument(Arrays.equals(record.getType(), NdefRecord.RTD_TEXT));
         try {
