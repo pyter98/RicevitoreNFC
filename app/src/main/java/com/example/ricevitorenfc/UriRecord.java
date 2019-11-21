@@ -39,18 +39,18 @@ import java.util.Arrays;
 /**
  * A parsed record containing a Uri.
  */
-public class UriRecord /*implements ParsedNdefRecord*/ {
+public class UriRecord implements ParsedNdefRecord {
 
-    /*private static final String TAG = "UriRecord";
+    private static final String TAG = "UriRecord";
 
-    public static final String RECORD_TYPE = "UriRecord";*/
+    public static final String RECORD_TYPE = "UriRecord";
 
     /**
      * NFC Forum "URI Record Type Definition"
      *
      * This is a mapping of "URI Identifier Codes" to URI string prefixes,
      * per section 3.2.2 of the NFC Forum URI Record Type Definition document.
-     *//*
+     */
     private static final BiMap<Byte, String> URI_PREFIX_MAP = ImmutableBiMap.<Byte, String>builder()
             .put((byte) 0x00, "")
             .put((byte) 0x01, "http://www.")
@@ -102,15 +102,15 @@ public class UriRecord /*implements ParsedNdefRecord*/ {
 
     public Uri getUri() {
         return mUri;
-    }*/
+    }
 
     /**
      * Convert {@link NdefRecord} into a {@link Uri}.
      * This will handle both TNF_WELL_KNOWN / RTD_URI and TNF_ABSOLUTE_URI.
      *
      * @throws IllegalArgumentException if the NdefRecord is not a record
-     *        / containing a URI.
-     *//*
+     *         containing a URI.
+     */
     public static UriRecord parse(NdefRecord record) {
         short tnf = record.getTnf();
         if (tnf == NdefRecord.TNF_WELL_KNOWN) {
@@ -118,17 +118,17 @@ public class UriRecord /*implements ParsedNdefRecord*/ {
         } else if (tnf == NdefRecord.TNF_ABSOLUTE_URI) {
             return parseAbsolute(record);
         }
-        throw new IllegalArgumentException("Unknown TNF " + tnf);*/
-    /*}
+        throw new IllegalArgumentException("Unknown TNF " + tnf);
+    }
 
-    /** Parse and absolute URI record *//*
+    /** Parse and absolute URI record */
     private static UriRecord parseAbsolute(NdefRecord record) {
         byte[] payload = record.getPayload();
         Uri uri = Uri.parse(new String(payload, Charset.forName("UTF-8")));
-        return new UriRecord(uri);*/
-  /*  }
+        return new UriRecord(uri);
+    }
 
-    /** Parse an well known URI record *//*
+    /** Parse an well known URI record */
     private static UriRecord parseWellKnown(NdefRecord record) {
         Preconditions.checkArgument(Arrays.equals(record.getType(), NdefRecord.RTD_URI));
         byte[] payload = record.getPayload();
@@ -138,7 +138,7 @@ public class UriRecord /*implements ParsedNdefRecord*/ {
          *
          * payload[1]...payload[payload.length - 1] contains the rest of
          * the URI.
-         *//*
+         */
         String prefix = URI_PREFIX_MAP.get(payload[0]);
         byte[] fullUri =
                 Bytes.concat(prefix.getBytes(Charset.forName("UTF-8")), Arrays.copyOfRange(payload, 1,
@@ -156,5 +156,5 @@ public class UriRecord /*implements ParsedNdefRecord*/ {
         }
     }
 
-    private static final byte[] EMPTY = new byte[0];*/
+    private static final byte[] EMPTY = new byte[0];
 }

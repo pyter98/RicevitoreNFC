@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 /**
  * A representation of an NFC Forum "Smart Poster".
  */
-public class SmartPoster /*implements ParsedNdefRecord*/ {
+public class SmartPoster implements ParsedNdefRecord {
 
     /**
      * NFC Forum Smart Poster Record Type Definition section 3.2.1.
@@ -25,7 +25,7 @@ public class SmartPoster /*implements ParsedNdefRecord*/ {
      * different languages, but a language MUST NOT be repeated). This record is
      * optional."
      */
-    /*private final TextRecord mTitleRecord;
+    private final TextRecord mTitleRecord;
 
     /**
      * NFC Forum Smart Poster Record Type Definition section 3.2.1.
@@ -34,7 +34,7 @@ public class SmartPoster /*implements ParsedNdefRecord*/ {
      * records are just metadata about this record. There MUST be one URI record
      * and there MUST NOT be more than one."
      */
-    /*private final UriRecord mUriRecord;
+    private final UriRecord mUriRecord;
 
     /**
      * NFC Forum Smart Poster Record Type Definition section 3.2.1.
@@ -47,7 +47,7 @@ public class SmartPoster /*implements ParsedNdefRecord*/ {
      * the UI designer may ignore it, but doing so will induce a different user
      * experience from device to device."
      */
-  /*  private final RecommendedAction mAction;
+    private final RecommendedAction mAction;
 
     /**
      * NFC Forum Smart Poster Record Type Definition section 3.2.1.
@@ -57,7 +57,7 @@ public class SmartPoster /*implements ParsedNdefRecord*/ {
      * This can be used to tell the mobile device what kind of an object it can
      * expect before it opens the connection. The Type record is optional."
      */
-  /*  private final String mType;
+    private final String mType;
 
     public SmartPoster(UriRecord uri, TextRecord title, RecommendedAction action, String type) {
         mUriRecord = Preconditions.checkNotNull(uri);
@@ -73,7 +73,7 @@ public class SmartPoster /*implements ParsedNdefRecord*/ {
     /**
      * Returns the title of the smart poster. This may be {@code null}.
      */
-   /* public TextRecord getTitle() {
+    public TextRecord getTitle() {
         return mTitleRecord;
     }
 
@@ -122,7 +122,7 @@ public class SmartPoster /*implements ParsedNdefRecord*/ {
      * Returns the first element of {@code elements} which is an instance of
      * {@code type}, or {@code null} if no such element exists.
      */
-  /*  private static <T> T getFirstIfExists(Iterable<?> elements, Class<T> type) {
+    private static <T> T getFirstIfExists(Iterable<?> elements, Class<T> type) {
         Iterable<T> filtered = Iterables.filter(elements, type);
         T instance = null;
         if (!Iterables.isEmpty(filtered)) {
@@ -186,5 +186,5 @@ public class SmartPoster /*implements ParsedNdefRecord*/ {
             return null;
         }
         return new String(type.getPayload(), Charsets.UTF_8);
-    }*/
+    }
 }

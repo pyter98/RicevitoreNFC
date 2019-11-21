@@ -1,11 +1,6 @@
 package com.example.ricevitorenfc;
 
-import android.app.Activity;
 import android.nfc.NdefRecord;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.google.common.base.Preconditions;
 
@@ -19,7 +14,7 @@ import java.util.Arrays;
 public class TextRecord /*implements ParsedNdefRecord */{
 
     /** ISO/IANA language code */
-   /* private final String mLanguageCode;
+    private final String mLanguageCode;
 
     private final String mText;
 
@@ -39,12 +34,12 @@ public class TextRecord /*implements ParsedNdefRecord */{
     /**
      * Returns the ISO/IANA language code associated with this text element.
      */
-   /* public String getLanguageCode() {
+    public String getLanguageCode() {
         return mLanguageCode;
     }
 
     // TODO: deal with text fields which span multiple NdefRecords
-    public static TextRecord parse(NdefRecord record) {
+    public static ParsedNdefRecord parse(NdefRecord record) {
         Preconditions.checkArgument(record.getTnf() == NdefRecord.TNF_WELL_KNOWN);
         Preconditions.checkArgument(Arrays.equals(record.getType(), NdefRecord.RTD_TEXT));
         try {
@@ -62,7 +57,7 @@ public class TextRecord /*implements ParsedNdefRecord */{
              *
              * Bits 5 to 0 are the length of the IANA language code.
              */
-          /*  String textEncoding = ((payload[0] & 0200) == 0) ? "UTF-8" : "UTF-16";
+            String textEncoding = ((payload[0] & 0200) == 0) ? "UTF-8" : "UTF-16";
             int languageCodeLength = payload[0] & 0077;
             String languageCode = new String(payload, 1, languageCodeLength, "US-ASCII");
             String text =
@@ -82,5 +77,5 @@ public class TextRecord /*implements ParsedNdefRecord */{
         } catch (IllegalArgumentException e) {
             return false;
         }
-    }*/
+    }
 }

@@ -98,10 +98,10 @@ public class MainActivity extends AppCompatActivity {
 
             } else {
                 byte[] empty = new byte[0];
-                //byte[] id = intent.getByteArrayExtra(NfcAdapter.EXTRA_ID);
-                //Tag tag = (Tag) intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-                //byte[] payload = dumpTagData(tag).getBytes();
-                NdefRecord record = new NdefRecord(NdefRecord.TNF_UNKNOWN, empty, null, null);
+                byte[] id = intent.getByteArrayExtra(NfcAdapter.EXTRA_ID);
+                Tag tag = (Tag) intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+                byte[] payload = dumpTagData(tag).getBytes();
+                NdefRecord record = new NdefRecord(NdefRecord.TNF_UNKNOWN, empty, id, payload);
                 NdefMessage msg = new NdefMessage(new NdefRecord[] {record});
                 msgs = new NdefMessage[] {msg};
             }
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         text.setText(builder.toString());
         button.setVisibility(View.VISIBLE);
     }
-/*
+
     private String dumpTagData(Tag tag) {
         StringBuilder sb = new StringBuilder();
         //byte[] id = tag.getId();
