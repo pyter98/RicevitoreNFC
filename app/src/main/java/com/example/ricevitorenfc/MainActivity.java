@@ -176,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 verified.setVisibility(View.VISIBLE);
                 refresh();
 
+
             }
         }
 
@@ -246,7 +247,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 MainActivity.this.finish();
             }
-        },5000);
+        },3000);
+        Toast.makeText(MainActivity.this, "Attendi...",Toast.LENGTH_SHORT).show();
+
     }
 
 
