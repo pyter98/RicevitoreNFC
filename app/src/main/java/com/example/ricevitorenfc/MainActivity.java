@@ -120,13 +120,22 @@ public class MainActivity extends AppCompatActivity {
         List<ParsedNdefRecord> records = NdefMessageParser.parse(msgs[0]);
         final int size = records.size();
 
-        for (int i = 0; i < size; i++) {
+        /*for (int i = 0; i < size; i++) {
             ParsedNdefRecord record = records.get(i);
             String str = record.str();
             builder.append(str).append("\n");
-        }
+        }*/
 
-        text.setText(builder.toString());
+        ParsedNdefRecord record = records.get(0);
+        String str = record.str();
+        builder.append(str);
+
+        String [] credenziali= builder.toString().split(" ");
+        String username = credenziali[0];
+        String password = credenziali[1];
+
+        text.setText("Username: "+username + "\nPassword: " + password);
         button.setVisibility(View.VISIBLE);
     }
+
 }
