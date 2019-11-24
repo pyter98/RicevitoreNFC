@@ -195,7 +195,8 @@ public class MainActivity extends AppCompatActivity {
                                 text.setText("Benvenuto in palestra "+username);
                                 initext.setVisibility(View.GONE);
                                 verified.setVisibility(View.VISIBLE);
-                                verified.setBackgroundResource(R.drawable.circle_tre);
+                                //verified.setBackgroundResource(R.drawable.circle_tre);
+                                verified.setBackgroundResource(R.drawable.ic_check_ok);
                                 refresh();
                             }
                             else {
