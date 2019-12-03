@@ -61,16 +61,7 @@ public class MainActivity extends AppCompatActivity {
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        /*button = findViewById(R.id.NewScan);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(intent);
-                MainActivity.this.finish();
-                initext.setVisibility(View.VISIBLE);
-            }
-        });*/
+
         if (nfcAdapter == null) {
             Toast.makeText(this, "No NFC", Toast.LENGTH_SHORT).show();
             finish();
@@ -179,9 +170,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
-
-        //text.setText("Username: "+username + "\nPassword: " + password);
-        //button.setVisibility(View.VISIBLE);
     }
 
     private void checkDB(final String username, final String password){
@@ -247,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 MainActivity.this.finish();
             }
-        },3000);
+        },4000);
         Toast.makeText(MainActivity.this, "Attendi...",Toast.LENGTH_SHORT).show();
 
     }
